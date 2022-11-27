@@ -24,19 +24,19 @@ public class ProductController {
         return productInterface.findById(id);
     }
 
-    @PostMapping
-    public void addProduct(@RequestBody Product product){
-        productInterface.addProduct(product);
-    }
-
     @PutMapping
-    public String updateProduct(@RequestBody Product product){
+    public Product updateProduct(@RequestBody Product product){
         return productInterface.updateProduct(product);
     }
 
     @DeleteMapping("{id}")
     public void deleteProduct(@PathVariable Long id) {
         productInterface.deleteProduct(id);
+    }
+
+    @GetMapping("/popularity")
+    public List<Product>allProductsOrderedByPopularity(){
+        return productInterface.allProductsOrderedByPopularity();
     }
 
 }

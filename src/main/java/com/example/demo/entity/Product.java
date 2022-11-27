@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,20 +24,26 @@ public class Product {
 
     private Long price;
 
-
     private Long quantity;
 
+    @Column
+    @NotNull
+    private int numberOfProductsPurchased;
 
     private String image;
 
-    @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "ORDER_PRODUCT",
-            joinColumns = @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "ORDER_ID",referencedColumnName = "ID")
-    )
+    @OneToMany(mappedBy = "product")
     @JsonIgnore
-    private List<Order> orderList;
+    private List<OrderProduct> orderProducts;
 
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName="ID")
+    @JsonIgnore
+    private Category category;
+
+    public Product() {
+
+    }
 }
 

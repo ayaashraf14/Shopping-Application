@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
@@ -18,12 +19,13 @@ public class Order {
     @Column
     private Long totalPrice;
 
-    @ManyToMany
-    @JoinTable(
-            name = "ORDER_PRODUCT",
-            joinColumns = @JoinColumn(name = "ORDER_ID",referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "ID")
-    )
-    private List<Product> productList;
+    @OneToMany(mappedBy = "order")
+    @JsonIgnore
+    private List<OrderProduct> orderProduct;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id",referencedColumnName="ID")
+    @JsonIgnore
+    private Customer customer;
 
 }

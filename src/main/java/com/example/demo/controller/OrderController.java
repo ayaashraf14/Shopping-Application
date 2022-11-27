@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Order;
-import com.example.demo.entity.Product;
-import com.example.demo.models.OrderModel;
+import com.example.demo.models.OrderDetailsModel;
 import com.example.demo.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,16 +17,16 @@ public class OrderController {
     private OrderInterface orderInterface;
 
     @GetMapping
-    public List<Order> getAllOrder(){
+    public List<OrderDetailsModel> getAllOrders(){
         return orderInterface.getAllOrder();
     }
 
-    @PostMapping
-    public Order createOrder(@RequestBody List<OrderModel> orderModel){
-
-        return orderInterface.createOrder(orderModel);
-    }
 
 
+//    @PostMapping
+//    public Order createOrder(@RequestBody List<OrderModel> orderModel){
+//
+//        return orderInterface.createOrder(orderModel);
+//    }
 
 }
