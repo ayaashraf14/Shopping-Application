@@ -1,5 +1,6 @@
-package com.example.demo.entity;
+package com.example.demo.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,10 +20,12 @@ public class OrderProduct {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "Order_ID",referencedColumnName="ID")
+    @JsonIgnore
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "Product_ID",referencedColumnName="ID")
+    @JsonIgnore
     private Product product;
 
 

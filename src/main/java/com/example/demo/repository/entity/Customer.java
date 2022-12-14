@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.repository.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,4 +35,6 @@ public class Customer {
 
     public Customer() {
     }
+
+
 }

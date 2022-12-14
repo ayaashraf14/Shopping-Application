@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -20,7 +20,6 @@ public class Order {
     private Long totalPrice;
 
     @OneToMany(mappedBy = "order")
-    @JsonIgnore
     private List<OrderProduct> orderProduct;
 
     @ManyToOne

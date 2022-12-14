@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.repository.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Data;
@@ -39,7 +39,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id",referencedColumnName="ID")
-    @JsonIgnore
     private Category category;
 
     public Product() {
